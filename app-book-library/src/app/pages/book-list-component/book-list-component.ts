@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-list-component',
@@ -7,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrl: './book-list-component.css',
 })
 export class BookListComponent {
+
+  constructor(
+    private router: Router
+  ){}
+
+  navegarDetalleLibre(): void {
+
+    this.router.navigate(['/Detalle-libro']);
+
+  }
+
+ 
 
 }
