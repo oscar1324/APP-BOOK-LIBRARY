@@ -1,17 +1,39 @@
-<div class="body-book-list">
-    <div class="central-panel">
-        <div class="text-panel"> 
-            <div class="text-panel-title">
-                <h1>Buy your favorite book for the best price</h1>
+
+<div class="">
+    <div class="body-book-list">
+        <div class="container">
+            <div class="text-panel__container"> 
+                <div class="text-panel__title">
+                    <h1>{{title}}</h1>
+                </div>
+                <div class="text-panel__description">
+                    <p>{{description}}</p>
+                </div>
+                <div class="text-panel-search">
+                    <mat-form-field class="search-field" appearance="outline">
+                        <input class="input-search"
+                            matInput
+                            [(ngModel)]="searchBook"
+                            placeholder="Search your favorite book"
+                        >
+                        <button class="button-search" mat-icon-button matSuffix  (click)="showBookSearched()">
+                            Search
+                        </button>   
+                    </mat-form-field>
+                </div>
             </div>
-            <div class="text-panel-body">
-                <p> Pensar que poner de descripcion.Pensar que poner de descripcion.Pensar que poner de descripcion.Pensar que poner de descripcion</p>
+            <div class="picture-panel">
+                <img 
+                    class="picture-panel__main--picture" 
+                    alt="Most famous books" 
+                    src="assets/img/library2.avif"
+                >
             </div>
-            <div class="text-panel-search">
-                <p> buscador</p>
-            </div>
-            
         </div>
-        <div class="picture-panel">Book picture</div>
+    </div>
+    <div>
+        
+    <div class="best-seller-panel__container">
+        <app-best-seller-component></app-best-seller-component>
     </div>
 </div>

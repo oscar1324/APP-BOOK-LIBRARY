@@ -13,11 +13,9 @@ import { FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Ejemplocompoennt } from '../../shared/ejemplocompoennt/ejemplocompoennt';
-
 
 @Component({
-  selector: 'app-book-list-component',
+  selector: 'app-ejemplocompoennt',
   imports: [
     MatInputModule, 
     MatIconModule, 
@@ -26,33 +24,10 @@ import { Ejemplocompoennt } from '../../shared/ejemplocompoennt/ejemplocompoennt
     CommonModule, 
     MatIconButton, 
     BestSellerComponent,
-    Ejemplocompoennt
-    ],
-  templateUrl: './book-list-component.html',
-  styleUrl: './book-list-component.css',
+  ],
+  templateUrl: './ejemplocompoennt.html',
+  styleUrl: './ejemplocompoennt.css',
 })
-export class BookListComponent {
-
-  searchBook: string = "";
-  title: string = "Find Your Next Read at the Lowest Price";
-  description: string = `From educational resources applied to the mind, 
-    we have a lot of textbooks to offer you. 
-    We only offer best-selling books for rent.`;
-
-  constructor(
-    private router: Router
-  ){}
-
-  showBookSearched(): void {
-    console.log('El libro que se quiere buscar es: ' , this.searchBook);
-  }
-
-  navegarDetalleLibre(): void {
-
-    this.router.navigate(['/Detalle-libro']);
-
-  }
-
- 
+export class Ejemplocompoennt {
 
 }
