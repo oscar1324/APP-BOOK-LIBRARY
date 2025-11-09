@@ -11,5 +11,6 @@
     </div>  
 </div>
 <div class="best-seller-panel__box-body">
-    <p>Developing the book cards</p>
+    <app-book-card *ngFor="let book of booksArray" [book]="book"></app-book-card>
+
 </div>

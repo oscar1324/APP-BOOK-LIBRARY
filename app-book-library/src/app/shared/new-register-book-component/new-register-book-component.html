@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="box_title">
+        <h2> Register new book</h2>
+    </div>
+
+    <div class="box-form">
+        <form [formGroup]="registerBookForm" >
+            <app-form-input formControlName="title" [label]="'Title'" [type]="'text'"></app-form-input>
+            <app-form-input formControlName="author" [label]="'Author'" [type]="'text'"></app-form-input>
+            <app-form-input formControlName="year" [label]="'Year'" [type]="'number'" [placeholder]="'2025'"></app-form-input>
+            <app-form-select formControlName="genre" [label]="'Genre'"></app-form-select>
+            <app-form-input formControlName="price" [label]="'Price'" [type]="'number'" [placeholder]="'00.00€'"></app-form-input>
+        </form>
+    </div>
+
+    <div class="box_form--button">
+        <button mat-raised-button color="primary" type="submit" class="button" (click)="onSubmit()">
+            Register
+        </button>
+    </div>
+</div>

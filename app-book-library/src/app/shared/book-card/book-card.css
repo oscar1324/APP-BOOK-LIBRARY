@@ -1,0 +1,89 @@
+
+.book-card {
+    border: 2px solid rgb(15, 15, 15);
+ 
+    padding: 0.5rem;
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 6px 5px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    background-color: rgb(245, 242, 242); 
+}   
+
+/*
+height: 10rem;
+    width: 6.5rem;
+    
+**/
+.book-card-box-img {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    max-width: 13rem;
+}
+
+.book-card-box-img__img {
+    height: auto;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-card-box-data {
+
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.book-card-box-data__title {
+
+    width: 70%;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    font-family: 'Intel', sans-serif;
+    padding-left: 0.2rem;
+}
+
+.book-card-box-data__price{
+
+    width: 30%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    padding-bottom: 0.15rem;
+    font-family: 'Intel', sans-serif;
+    color: var(--color-price);
+    font-weight: 600;
+    padding-right: 0.2rem;
+}
+
+.book-card-box-genre__genre {
+
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    
+    padding-left: 0.2rem;
+    font-family: 'Intel', sans-serif;
+    color: var(--color-grey-white2);
+}
+
+.genre {
+    margin-top: 0;
+}
+
+
+

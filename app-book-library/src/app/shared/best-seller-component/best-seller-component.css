@@ -2,13 +2,13 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 6rem 0 2rem 0;
+    margin: 2rem 0 2rem 0;
 
 }
 
 .box_title {
 
-    width: 97%;
+    width: 94%;
     font-family: 'Intel', sans-serif;
     color: var(--color-black);
     font-size: 1.2rem;
@@ -16,10 +16,11 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    padding-left: 9rem;
 }
 
 .box_button {
-    width: 3%;
+    width: 10%;
     padding-top: 0.8rem;
     padding-right: 0.6rem;
 
@@ -29,5 +30,20 @@
     background-color: var(--color-black);
     color: var(--color-white);
     
+}
+
+.best-seller-panel__box-body {
+
+   width: 90%; 
+   height: auto;
+   min-height: auto;
+   margin-bottom: 2rem;
+   padding-left: 4rem;
+   padding-right: 4rem;
+   display: grid;
+   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) ;
+   gap: 5rem;
+ 
+
 }
 

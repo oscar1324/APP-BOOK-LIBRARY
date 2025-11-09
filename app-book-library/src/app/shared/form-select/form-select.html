@@ -1,6 +1,6 @@
 <mat-form-field appearance="outline" class="input">
     <mat-label>{{label}}</mat-label>
-    <mat-select [(ngModel)]="valueSelect">
+    <mat-select [(ngModel)]="valueSelect" (selectionChange)="onChange($event.value); onTouched()">
         <mat-option *ngFor="let indice of genreArray" [value]="indice.valor">
             {{indice.nombre}}
         </mat-option>

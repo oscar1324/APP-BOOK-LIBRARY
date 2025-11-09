@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, forwardRef } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -7,13 +7,22 @@ import { FormsModule } from '@angular/forms';
 import { OnInit } from '@angular/core';
 
 
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+
+
+
 @Component({
   selector: 'app-form-input',
-  imports: [CommonModule,ReactiveFormsModule,MatInputModule, FormsModule],
+  imports: [CommonModule,ReactiveFormsModule,MatInputModule, FormsModule, MatFormFieldModule],
   templateUrl: './form-input.html',
   styleUrl: './form-input.css',
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => FormInput),
+    multi: true
+  }]
 })
-export class FormInput implements OnInit{
+export class FormInput implements ControlValueAccessor{
 
 
   @Input() label!: string;
@@ -21,11 +30,22 @@ export class FormInput implements OnInit{
   @Input() type!: string;
   @Input() placeholder!: string;
 
-  inputValue!: any;
+  inputValue: any = "";
 
-  ngOnInit(): void {
-      
- 
+
+  onChange = (valor: any) => {};
+  onTouched = () => {};
+
+  writeValue(value: any): void {
+    this.inputValue = value
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
   }
   
 }

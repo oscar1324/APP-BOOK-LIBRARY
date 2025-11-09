@@ -13,7 +13,7 @@ import { FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Ejemplocompoennt } from '../../shared/ejemplocompoennt/ejemplocompoennt';
+
 
 
 @Component({
@@ -25,8 +25,7 @@ import { Ejemplocompoennt } from '../../shared/ejemplocompoennt/ejemplocompoennt
     MatButtonModule, 
     CommonModule, 
     MatIconButton, 
-    BestSellerComponent,
-    Ejemplocompoennt
+    BestSellerComponent
     ],
   templateUrl: './book-list-component.html',
   styleUrl: './book-list-component.css',

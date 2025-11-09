@@ -1,0 +1,20 @@
+
+<div class="book-card" >
+    
+    <div class="book-card-box-img">
+        <img class="book-card-box-img__img" src="assets/img/book_grey.avif">
+    </div>
+    <div class="book-card-box-data">
+            
+        <div class="book-card-box-data__title">
+            <h3>{{book.title}}</h3>
+        </div>
+        <div  class="book-card-box-data__price">
+            <p>{{book.price | number: '1.2-2'}}€</p>
+        </div>
+    </div>
+    <div class="book-card-box-genre__genre">
+        <p class="genre">{{book.genre}}</p>
+    </div>
+
+</div>

@@ -1,6 +1,6 @@
 
 .body-book-list {
-    
+    margin-top: 1rem;
     height: auto;
     padding: 1% 0% 1% 0%;
     background-color: var(--color-background-grey);
@@ -22,6 +22,11 @@
     width: 100%;
     height: auto;
     padding-left: 5%;
+   
+}
+
+.best-seller-panel__container {
+    background-color: var(--color-background-grey);
     
 }
 
