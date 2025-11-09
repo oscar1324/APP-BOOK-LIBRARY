@@ -9,6 +9,7 @@ header {
 .content-header {
     background-color: rgb(221, 223, 220);
     border: 1px solid black;
+    border-radius: 5px;
     display: flex;
     flex-direction: row;
     width: 100%;

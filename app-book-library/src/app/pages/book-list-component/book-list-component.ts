@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule, MatIconButton } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { BestSellerComponent } from '../../shared/best-seller-component/best-seller-component';
+import { BestSellerComponent } from '../../shared/components/best-seller-component/best-seller-component';
 
 
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';

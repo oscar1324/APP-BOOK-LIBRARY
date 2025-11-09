@@ -1,0 +1,10 @@
+.container {
+    margin: 3rem 0 3rem 0 ;
+}
+
+.button {
+    width: 100%;
+    background-color: var(--color-red-delete);
+    color: var(--color-white);
+    border-radius: 5px;
+}

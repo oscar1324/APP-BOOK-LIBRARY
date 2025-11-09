@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { FormInput } from '../form-input/form-input';
-import { FormSelect } from "../form-select/form-select";
+import { FormInput } from '../../forms/form-input/form-input';
+import { FormSelect } from "../../forms/form-select/form-select";
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import { HttpBookService } from '../../features/services/HttpBookService';
+import { HttpBookService } from '../../../features/services/HttpBookService';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ReactiveFormsModule, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { title } from 'process';
@@ -78,7 +78,7 @@ export class NewBookComponent {
             verticalPosition: 'top'
           })
           this.playbackAduio();
-          //this.refresh();
+          this.refresh();
           this.windowsDialog.close(response);
         },
         error: (err)=> {
@@ -107,6 +107,7 @@ export class NewBookComponent {
   refresh(): void {
     setTimeout(()=> {
       window.location.reload();
+
     }, 2500);
   }
 

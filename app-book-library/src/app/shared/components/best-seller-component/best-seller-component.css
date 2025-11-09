@@ -41,8 +41,8 @@
    padding-left: 4rem;
    padding-right: 4rem;
    display: grid;
-   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) ;
-   gap: 5rem;
+   grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)) ;
+   gap: 4rem;
  
 
 }

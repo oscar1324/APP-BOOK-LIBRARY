@@ -1,3 +1,16 @@
-<div>
+<div class="container">
     <h1>Detalle libro</h1>
+    <div>
+        <p>{{data.id}}</p>
+        <p>{{data.title}}</p>
+        <p>{{data.author}}</p>
+        <p>{{data.genre}}</p>
+        <p>{{data.year}}</p>
+        <p>{{data.price}}</p>
+        <button mat-icon-button class="button" (click)="deleteRequest()">
+            <mat-icon>
+                delete
+            </mat-icon>
+        </button>
+    </div>
 </div>

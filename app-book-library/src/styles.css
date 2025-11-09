@@ -11,6 +11,7 @@
     --color-black: rgb(3,3,3);
     --color-grey-white: rgb(66, 66, 66);
     --color-grey-white2: rgb(116, 116, 116);
+    --color-red-delete: rgb(241, 12, 12);
 }
 
 html, body { height: 100%; }
