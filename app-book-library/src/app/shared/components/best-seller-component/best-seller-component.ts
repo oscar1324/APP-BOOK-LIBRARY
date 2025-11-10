@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule, MatIconButton } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { BookCard } from '../book-card/book-card';
 import {inject, EnvironmentInjector } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 
 @Component({
@@ -28,7 +29,8 @@ export class BestSellerComponent implements OnInit{
   constructor(
     private windowsDialog: MatDialog,
     private bookService: HttpBookService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private cdr: ChangeDetectorRef
   ) {
 
   }
@@ -76,7 +78,7 @@ export class BestSellerComponent implements OnInit{
           console.log('Codigo headers -> ' ,result.headers);
           console.log('Codigo body -> ' ,result.body);
 
-          if(result.status) {
+          if(result.status >= 500) {
             this._snackBar.open('5xx Internal Server Error!','Close',{
               duration: 3000,
               horizontalPosition: 'center',
@@ -84,7 +86,8 @@ export class BestSellerComponent implements OnInit{
               
             });
           }
-          this.booksArray = result;
+          this.booksArray = result.body;
+          this.cdr.detectChanges();
         } else {
           console.error('No se han podido encontrar resultados');
         }

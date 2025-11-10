@@ -1,4 +1,14 @@
 
+::ng-deep .mdc-notched-outline{
+   
+    border-bottom: 1px solid black;
+    
+}
+
+
+
+
+
 .body-book-list {
     margin-top: 2rem;
     height: auto;

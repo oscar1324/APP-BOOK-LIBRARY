@@ -3,13 +3,14 @@
     border: 2px solid black;
     padding: 1rem;
     border-radius: 5px;
+    background-color: rgb(230, 230, 230);
 }
 
 .container {
     display: flex;
     flex-direction: row;
 
-
+    padding: 1rem;
 }
 
 .box-title {
@@ -21,18 +22,22 @@
 }
 
 .box-img {
-    border: 1px solid black;
-    width: 25%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .box-img__img {
     width: 100%;
     height: auto;
+    border-radius: 500px;
 
 }
 
 .box-data {
-    border: 1px solid black;
+
     width: 55%;
     height: auto;
     padding: 1rem;
@@ -48,30 +53,37 @@
 .control {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+   
+    width: 100%;
+    margin-top: 1rem;
 }
 
 .box-button {
    
     width: 50%;
-    height: 100%;
+    height: auto;
 
 }
 
 .button__update {
-    width: 96%;
+    width: 30%;
     
     background-color: var(--color-black);
     color: var(--color-white);
     border-radius: 5px;
     margin-bottom: 1rem;
-    margin-right: 1rem;
+    margin-right: 5rem;
     
 }
 
 .button__delete {
-    width: 100%;
+    width: 30%;
     background-color: var(--color-red-delete);
     color: var(--color-white);
     border-radius: 5px;
+    margin-bottom: 1rem;
+    margin-right: 5rem;
     
 }

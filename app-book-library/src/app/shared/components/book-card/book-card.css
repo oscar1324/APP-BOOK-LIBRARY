@@ -91,5 +91,15 @@ height: 10rem;
     margin-top: 0;
 }
 
+.box_form--button {
+
+    width: 100%;
+}
+
+.button {
+    background-color: var(--color-black);
+    width: 100%;
+}
+
 
 

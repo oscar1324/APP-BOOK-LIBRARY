@@ -5,10 +5,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatIconButton } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-book-card',
-  imports: [CommonModule],
+  imports: [CommonModule,MatButtonModule,MatIconModule],
   templateUrl: './book-card.html',
   styleUrl: './book-card.css',
 })
