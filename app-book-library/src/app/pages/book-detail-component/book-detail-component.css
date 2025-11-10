@@ -1,10 +1,77 @@
-.container {
-    margin: 3rem 0 3rem 0 ;
+.main {
+    margin: 2rem 0rem 3rem 0rem;
+    border: 2px solid black;
+    padding: 1rem;
+    border-radius: 5px;
 }
 
-.button {
+.container {
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+.box-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.box-img {
+    border: 1px solid black;
+    width: 25%;
+}
+
+.box-img__img {
+    width: 100%;
+    height: auto;
+
+}
+
+.box-data {
+    border: 1px solid black;
+    width: 55%;
+    height: auto;
+    padding: 1rem;
+}
+
+
+.box__pay {
+    border: 1px solid black;
+    width: 30%;
+    height: auto;
+}
+
+.control {
+    display: flex;
+    flex-direction: row;
+}
+
+.box-button {
+   
+    width: 50%;
+    height: 100%;
+
+}
+
+.button__update {
+    width: 96%;
+    
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    
+}
+
+.button__delete {
     width: 100%;
     background-color: var(--color-red-delete);
     color: var(--color-white);
     border-radius: 5px;
+    
 }

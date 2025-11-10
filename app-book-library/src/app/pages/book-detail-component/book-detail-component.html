@@ -1,16 +1,41 @@
-<div class="container">
-    <h1>Detalle libro</h1>
-    <div>
-        <p>{{data.id}}</p>
-        <p>{{data.title}}</p>
-        <p>{{data.author}}</p>
-        <p>{{data.genre}}</p>
-        <p>{{data.year}}</p>
-        <p>{{data.price}}</p>
-        <button mat-icon-button class="button" (click)="deleteRequest()">
-            <mat-icon>
-                delete
-            </mat-icon>
-        </button>
+<div class="main">
+    <div class="box-title">
+        <h1 class="title">Edit book</h1>
+    </div>
+    <div class="container">
+        <div class="box-img">
+           <img class="box-img__img" src="assets/img/book_grey.avif">
+        </div>
+        <div class="box-data">
+            <div class="box-data__data">
+
+                <form [formGroup]="updateBookForm" >
+                    <app-form-input formControlName="title" [label]="'Title'" [type]="'text'" [inputValue]="data.title"></app-form-input>
+                    <app-form-input formControlName="author" [label]="'Author'" [type]="'text'" [inputValue]="data.author"></app-form-input>
+                    <app-form-input formControlName="year" [label]="'Year'" [type]="'text'" [inputValue]="data.year"></app-form-input>
+                    <app-form-select formControlName="genre" [label]="'Genre'" [valueSelect]="data.genre"></app-form-select>
+                    <app-form-input formControlName="price" [label]="'Price'" [type]="'text'" [inputValue]="data.price"></app-form-input>
+                
+                </form>
+                
+            </div>
+            <div class="box-button">
+                <div class="control">
+                    <button mat-icon-button class="button__update" (click)="updateRequest()">
+                        <mat-icon>
+                           check_circle
+                        </mat-icon>
+                    </button>
+                    <button mat-icon-button class="button__delete" (click)="deleteRequest()">
+                        <mat-icon>
+                            delete
+                        </mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="box__pay">
+            <p> price, transport and buttons</p>
+        </div>
     </div>
 </div>

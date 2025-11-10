@@ -42,6 +42,7 @@ export class NewBookComponent {
       genre: ['', Validators.required]
     })
     this.chargeAudio();
+    console.warn('*******************************' , this.registerBookForm.get('author')?.disabled);
   }
 
 

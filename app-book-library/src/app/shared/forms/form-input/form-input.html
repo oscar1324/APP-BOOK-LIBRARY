@@ -4,7 +4,7 @@
         [type]="type" 
         [(ngModel)]="inputValue" 
         [placeholder]="placeholder"
-
+        [disabled]="IsDisabled"
         (input)="onChange($event.target.value)"
         (blur)="onTouched()">
 </mat-form-field>

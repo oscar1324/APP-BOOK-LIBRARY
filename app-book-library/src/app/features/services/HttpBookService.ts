@@ -14,13 +14,19 @@ export class HttpBookService {
 
     }
 
-    getAllBooks(): Observable<Ibook[]> {
-      return this.http.get<Ibook[]>(`https://690baaf96ad3beba00f5d716.mockapi.io/api/Libreria_Universal/obtenerLibreria`);
+    getAllBooks(): Observable<any> {
+      return this.http.get<any>(`https://690baaf96ad3beba00f5d716.mockapi.io/api/Libreria_Universal/obtenerLibreria` , {
+        observe: 'response'
+      });
     }
 
     insertNewBook(formData: any): Observable<any> {
       console.log(formData);
       return this.http.post(`https://690baaf96ad3beba00f5d716.mockapi.io/api/Libreria_Universal/obtenerLibreria`, formData);
+    }
+
+    updateBook(formData: any): Observable<any> {
+      return this.http.put(`https://690baaf96ad3beba00f5d716.mockapi.io/api/Libreria_Universal/obtenerLibreria/${formData.id}`, formData);
     }
 
     deteleById(formData: any): Observable<any> {

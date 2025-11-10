@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, Input, forwardRef, OnChanges, SimpleChanges } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -22,15 +22,25 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
     multi: true
   }]
 })
-export class FormInput implements ControlValueAccessor{
+export class FormInput implements ControlValueAccessor, OnChanges{
 
 
   @Input() label!: string;
   @Input() control!: FormControl;
   @Input() type!: string;
   @Input() placeholder!: string;
+  @Input() inputValue!: any;
+  IsDisabled: boolean = false;
 
-  inputValue: any = "";
+  constructor() {
+    console.warn('The input value is -> ' , this.inputValue);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['inputValue'] && !changes['inputValue'].firstChange) {
+      this.inputValue = changes['inputValue'].currentValue;
+    }
+  }
 
 
   onChange = (valor: any) => {};
@@ -46,6 +56,10 @@ export class FormInput implements ControlValueAccessor{
 
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
+  }
+
+  setDisabledState?(isDisabled: boolean): void {
+      this.IsDisabled = isDisabled;
   }
   
 }

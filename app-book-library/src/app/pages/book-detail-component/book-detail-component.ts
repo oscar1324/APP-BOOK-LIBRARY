@@ -9,10 +9,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpBookService } from '../../features/services/HttpBookService';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormInput } from '../../shared/forms/form-input/form-input';
+import { FormSelect } from '../../shared/forms/form-select/form-select';
+import { MatSelect } from "@angular/material/select";
+import { FormBuilder } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { Validators } from '@angular/forms';
+import { ChangeDetectorRef } from '@angular/core';
+import { MatInputModule } from '@angular/material/input';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { error } from 'console';
 
 @Component({
   selector: 'app-book-detail-component',
-  imports: [MatIconButton, MatButtonModule,MatIconModule, CommonModule],
+  imports: [MatFormFieldModule,MatInputModule,ReactiveFormsModule,FormSelect, FormInput, MatIconButton, MatButtonModule, MatIconModule, CommonModule],
   templateUrl: './book-detail-component.html',
   styleUrl: './book-detail-component.css',
 })
@@ -28,14 +40,25 @@ export class BookDetailComponent implements OnInit{
   };
 
   audioPlayer!: HTMLAudioElement;
+  updateBookForm!: FormGroup;
+  
 
   constructor(
+    private formBuilder: FormBuilder,
     private router: ActivatedRoute,
     private navegacion: Router,
     private bookService: HttpBookService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private cd: ChangeDetectorRef
   ) {
 
+    this.updateBookForm = this.formBuilder.group({
+      title: ['', Validators.required],
+      author: ['', Validators.required],
+      price: ['', Validators.required],
+      year: ['', [Validators.required,  Validators.min(1500)]],
+      genre: ['', Validators.required]
+    })
     this.chargeAudio();
     
   }
@@ -53,7 +76,18 @@ export class BookDetailComponent implements OnInit{
         genre: params['genre'],
         price: params['price']
       }
-    })
+
+      // Damos valores al formulario
+      this.updateBookForm.patchValue({
+        title: this.data.title,
+        author: this.data.author,
+        year: this.data.year,
+        genre: this.data.genre,
+        price: this.data.price
+      });
+
+      this.cd.detectChanges();
+    });
   }
 
   chargeAudio(): void {
@@ -67,6 +101,40 @@ export class BookDetailComponent implements OnInit{
     this.audioPlayer.play().catch( error => {
       console.error('A problem has during playback -> ', error);
     })
+  }
+
+  updateRequest(): void {
+
+    const objeto_json = {
+      title: this.updateBookForm.value.title,
+      author: this.updateBookForm.value.author ,
+      year: this.updateBookForm.value.year,
+      genre: this.updateBookForm.value.genre,
+      price: this.updateBookForm.value.price,
+      id: this.data.id
+    };
+
+    this.bookService.updateBook(objeto_json).subscribe({
+      next: (response) => {
+        console.warn('Se ha realizado la petición de manera exitosa -> ', response.status);
+        this.playbackAduio();
+        this._snackBar.open('The book has been update!','Close',{
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top'
+        });
+        
+        this.navegacion.navigate(['/Libreria-Salamanca']).then(()  => window.location.reload());
+
+      },
+      error: (err) => {
+        console.log('Error durante la peticion Http post -> ', err);
+      }
+    })
+
+    console.warn(objeto_json);
+   
+
   }
 
   deleteRequest(): void {
@@ -87,20 +155,12 @@ export class BookDetailComponent implements OnInit{
             this.navegacion.navigate(['/Libreria-Salamanca']);
           },2000);
           
-          
-
-
-
-          
         }
-
       },
       error: (err)=> {
 
         console.log("Problemas durante la eliminación -> " , err);
-
       }
     })
   }
-
 }

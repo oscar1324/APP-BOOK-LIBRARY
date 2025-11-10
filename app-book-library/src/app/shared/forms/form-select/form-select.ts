@@ -30,7 +30,7 @@ export class FormSelect implements ControlValueAccessor{
     { valor:'self-help', nombre: 'self-help'},
     { valor:'Romantic novel', nombre: 'Romantic novel'}
   ]
-  valueSelect: string ="";
+  @Input() valueSelect: string ="";
 
   onChange = (value: any) => {};
   onTouched = () => {};

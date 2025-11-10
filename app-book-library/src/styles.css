@@ -9,9 +9,10 @@
     --color-green-button: rgb(36,129,36);
     --color-price: rgb(9, 173, 9);
     --color-black: rgb(3,3,3);
+    --color-update: rgb(92, 134, 226);
     --color-grey-white: rgb(66, 66, 66);
     --color-grey-white2: rgb(116, 116, 116);
-    --color-red-delete: rgb(241, 12, 12);
+    --color-red-delete: rgb(180, 8, 8);
 }
 
 html, body { height: 100%; }

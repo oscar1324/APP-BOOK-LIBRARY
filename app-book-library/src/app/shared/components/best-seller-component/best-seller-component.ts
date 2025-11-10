@@ -9,6 +9,7 @@ import { Ibook } from '../../../models/IBook.model';
 import { CommonModule } from '@angular/common';
 import { BookCard } from '../book-card/book-card';
 import {inject, EnvironmentInjector } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class BestSellerComponent implements OnInit{
 
   constructor(
     private windowsDialog: MatDialog,
-    private bookService: HttpBookService
+    private bookService: HttpBookService,
+    private _snackBar: MatSnackBar
   ) {
 
   }
@@ -70,7 +72,18 @@ export class BestSellerComponent implements OnInit{
       next: (result) => {
 
         if (result) {
-          console.log(result);
+          console.log('Codigo estado -> ' ,result.status);
+          console.log('Codigo headers -> ' ,result.headers);
+          console.log('Codigo body -> ' ,result.body);
+
+          if(result.status) {
+            this._snackBar.open('5xx Internal Server Error!','Close',{
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+              
+            });
+          }
           this.booksArray = result;
         } else {
           console.error('No se han podido encontrar resultados');
