@@ -3,11 +3,12 @@ import { FormInput } from '../../forms/form-input/form-input';
 import { FormSelect } from "../../forms/form-select/form-select";
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import { HttpBookService } from '../../../features/services/HttpBookService';
+import { HttpBookService } from '../../../core/services/HttpBookService';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ReactiveFormsModule, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { title } from 'process';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoggerService } from '../../../core/services/loggerService';
 
 
 @Component({
@@ -30,9 +31,10 @@ export class NewBookComponent {
     private formBuilder: FormBuilder,
     private httpBookService: HttpBookService,
     private windowsDialog: MatDialogRef<NewBookComponent>,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private loggerService: LoggerService
   ) {
-    console.log("Servicio recibido-> " , this.httpBookService);
+
 
     this.registerBookForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -42,7 +44,7 @@ export class NewBookComponent {
       genre: ['', Validators.required]
     })
     this.chargeAudio();
-    console.warn('*******************************' , this.registerBookForm.get('author')?.disabled);
+
   }
 
 
@@ -50,13 +52,8 @@ export class NewBookComponent {
   onSubmit(): void {
 
     if(this.registerBookForm.valid) {
-      console.log('-------------this form is valid! --------------> ');
-      console.log('Validado:  ' , this.registerBookForm.valid);
-      console.log('Controles: ' , this.registerBookForm.controls);
-      console.log('Status:    ' , this.registerBookForm.status);
-      console.log('Touched:   ', this.registerBookForm.touched);
-      console.log('Valores:   ' , this.registerBookForm.value);
-      console.log('-----------------------------------------------');
+
+      this.loggerService.log('Status of validators: ', this.registerBookForm.valid);
 
       const objeto_json: any = {
         
@@ -71,7 +68,7 @@ export class NewBookComponent {
 
       this.httpBookService.insertNewBook(objeto_json).subscribe({
         next: (response)=> {
-          console.warn('Enviado con exito -> ' , response.status);
+          this.loggerService.log('The HttpRequest was correct: ', response.status);
 
           this._snackBar.open(  'New book has been registered!','Close', {
             duration: 3000,
@@ -82,21 +79,29 @@ export class NewBookComponent {
           this.refresh();
           this.windowsDialog.close(response);
         },
-        error: (err)=> {
-           console.error('Errores durante el envio-> ' , err);
+        error: (error)=> {
+          this.loggerService.error('Error during the insert HttpRequest: ', error);
 
-           this._snackBar.open('It has not been possible to register a new book!','Close', {
+          let errorMessage = 'An unknown error occurred. Please try again.';
+
+          if (error.status === 0) {
+            errorMessage = 'Connection error! Check your network.';
+          } else if (error.status >= 500) {
+            errorMessage = 'Internal Server Error 5xx.';
+          } else if (error.status >= 400) {
+            errorMessage = 'Request failed. Please check the data submitted.';
+          }
+
+          this._snackBar.open('It has not been possible to register a new book!','Close', {
             duration: 3000,
             horizontalPosition: 'center',
             verticalPosition: 'top'
           })
-          this.refresh()
+     
         }
       })
 
     } else {
-
-
       this._snackBar.open( 'You have to review the form!','Close', {
           duration: 3000,
           horizontalPosition: 'center',

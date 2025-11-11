@@ -33,7 +33,7 @@ export class FormInput implements ControlValueAccessor, OnChanges{
   IsDisabled: boolean = false;
 
   constructor() {
-    console.warn('The input value is -> ' , this.inputValue);
+   
   }
 
   ngOnChanges(changes: SimpleChanges): void {

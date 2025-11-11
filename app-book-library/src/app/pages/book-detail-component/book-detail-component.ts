@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconButton } from '@angular/material/button';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpBookService } from '../../features/services/HttpBookService';
+import { HttpBookService } from '../../core/services/HttpBookService';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormInput } from '../../shared/forms/form-input/form-input';
 import { FormSelect } from '../../shared/forms/form-select/form-select';
@@ -21,6 +21,8 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { error } from 'console';
+import { LoggerService } from '../../core/services/loggerService';
+
 
 @Component({
   selector: 'app-book-detail-component',
@@ -49,7 +51,8 @@ export class BookDetailComponent implements OnInit{
     private navegacion: Router,
     private bookService: HttpBookService,
     private _snackBar: MatSnackBar,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private loggerService: LoggerService
   ) {
 
     this.updateBookForm = this.formBuilder.group({
@@ -67,7 +70,8 @@ export class BookDetailComponent implements OnInit{
   ngOnInit(): void {
     
     this.router.queryParams.subscribe(params => {
-      console.log('Datos recibidos: ' , params);
+      this.loggerService.log('Review the params data', params);
+
       this.data = {
         id: params['id'],
         title: params['title'],
@@ -99,7 +103,7 @@ export class BookDetailComponent implements OnInit{
   playbackAduio(): void {
 
     this.audioPlayer.play().catch( error => {
-      console.error('A problem has during playback -> ', error);
+      this.loggerService.error('Problem has during playback -> ', error);
     })
   }
 
@@ -116,7 +120,18 @@ export class BookDetailComponent implements OnInit{
 
     this.bookService.updateBook(objeto_json).subscribe({
       next: (response) => {
-        console.warn('Se ha realizado la petición de manera exitosa -> ', response.status);
+
+        if(response.status >= 500) {
+          this._snackBar.open('5xx Internal Server Error!','Close',{
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom',
+              
+          });
+          this.loggerService.error('Failed to fetch books', response.status);
+        } 
+
+        this.loggerService.log('Data fetched succesfully -> ', response.status);
         this.playbackAduio();
         this._snackBar.open('The book has been update!','Close',{
           duration: 3000,
@@ -128,22 +143,30 @@ export class BookDetailComponent implements OnInit{
 
       },
       error: (err) => {
-        console.log('Error durante la peticion Http post -> ', err);
+        console.log('Error during the Http request -> ', err);
+        this.loggerService.error('Failed to fetch books', err);
       }
     })
-
-    console.warn(objeto_json);
-   
 
   }
 
   deleteRequest(): void {
-    console.log('Deleting book with id -> ', this.data.id);
 
     this.bookService.deteleById(this.data.id).subscribe ({
       next: (response)=> {
         if(response){
-          console.log("Se ha eliminado con Exito");
+
+          if(response.status >= 500) {
+            this._snackBar.open('5xx Internal Server Error!','Close',{
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'bottom',
+                
+            });
+            this.loggerService.error('Failed to fetch books', response.status);
+          } 
+
+          this.loggerService.log('This book has been deleted, status: ', response.status);
 
           this.playbackAduio();
           this._snackBar.open('The book has been deleted!','Close',{
@@ -157,9 +180,18 @@ export class BookDetailComponent implements OnInit{
           
         }
       },
-      error: (err)=> {
+      error: (error) => {
+        this.loggerService.error('Error during the insert HttpRequest: ', error);
 
-        console.log("Problemas durante la eliminación -> " , err);
+        let errorMessage = 'An unknown error occurred. Please try again.';
+
+        if (error.status === 0) {
+          errorMessage = 'Connection error! Check your network.';
+        } else if (error.status >= 500) {
+          errorMessage = 'Internal Server Error 5xx.';
+        } else if (error.status >= 400) {
+          errorMessage = 'Request failed. Please check the data submitted.';
+        }
       }
     })
   }

@@ -21,7 +21,6 @@ export class HttpBookService {
     }
 
     insertNewBook(formData: any): Observable<any> {
-      console.log(formData);
       return this.http.post(`https://690baaf96ad3beba00f5d716.mockapi.io/api/Libreria_Universal/obtenerLibreria`, formData);
     }
 
@@ -30,7 +29,6 @@ export class HttpBookService {
     }
 
     deteleById(formData: any): Observable<any> {
-      console.log('deteleById' ,formData);
       return this.http.delete(`https://690baaf96ad3beba00f5d716.mockapi.io/api/Libreria_Universal/obtenerLibreria/${formData}`);
     }
 }

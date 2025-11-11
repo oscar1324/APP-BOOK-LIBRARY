@@ -3,14 +3,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule, MatIconButton } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { NewBookComponent } from '../../Dialogs/new-register-book-component/new-register-book-component';
-import { HttpBookService } from '../../../features/services/HttpBookService';
+import { HttpBookService } from '../../../core/services/HttpBookService';
 import { OnInit } from '@angular/core';
 import { Ibook } from '../../../models/IBook.model';
 import { CommonModule } from '@angular/common';
 import { BookCard } from '../book-card/book-card';
 import {inject, EnvironmentInjector } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { LoggerService } from '../../../core/services/loggerService';
 
 
 @Component({
@@ -30,7 +30,8 @@ export class BestSellerComponent implements OnInit{
     private windowsDialog: MatDialog,
     private bookService: HttpBookService,
     private _snackBar: MatSnackBar,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private loggerService: LoggerService
   ) {
 
   }
@@ -74,9 +75,6 @@ export class BestSellerComponent implements OnInit{
       next: (result) => {
 
         if (result) {
-          console.log('Codigo estado -> ' ,result.status);
-          console.log('Codigo headers -> ' ,result.headers);
-          console.log('Codigo body -> ' ,result.body);
 
           if(result.status >= 500) {
             this._snackBar.open('5xx Internal Server Error!','Close',{
@@ -85,11 +83,27 @@ export class BestSellerComponent implements OnInit{
               verticalPosition: 'bottom',
               
             });
-          }
+            this.loggerService.error('Failed to fetch books', result.status);
+          } 
+
+          this.loggerService.log('Data fetched successfully. Length of data-> ', result.body.length);
           this.booksArray = result.body;
           this.cdr.detectChanges();
         } else {
-          console.error('No se han podido encontrar resultados');
+          this.loggerService.log('Is didn´t fetch any data' , '');
+        }
+      },
+      error: (error) => {
+        this.loggerService.error('Error during the insert HttpRequest: ', error);
+
+        let errorMessage = 'An unknown error occurred. Please try again.';
+
+        if (error.status === 0) {
+          errorMessage = 'Connection error! Check your network.';
+        } else if (error.status >= 500) {
+          errorMessage = 'Internal Server Error 5xx.';
+        } else if (error.status >= 400) {
+          errorMessage = 'Request failed. Please check the data submitted.';
         }
       }
       
