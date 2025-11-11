@@ -3,3 +3,12 @@
     margin-left: 3rem;
     margin-right: 3rem;
 }
+
+@media (max-width: 768px) { 
+    .input {
+        width: 100%;
+        margin-left: 0rem;
+        margin-right: 0rem;
+        border: none !important;
+    }
+}

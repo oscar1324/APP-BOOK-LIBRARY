@@ -6,12 +6,11 @@
 ::ng-deep .mdc-notched-outline__notch {
     border: none !important;
     width: 100% !important;
-
     clip-path: none !important;
 }
 
 ::ng-deep .mat-mdc-text-field-wrapper .mdc-notched-outline__notch {
-    width: 100%;
+width: 100%;
   border-bottom: 1px solid black !important;
   border-left: none !important;
   border-right: none !important;
@@ -35,5 +34,14 @@
 
 .mdc-notched-outline {
     border-bottom: 2px solid black;
+}
+
+@media (max-width: 768px) { 
+    .input {
+        width: 100%;
+        margin-left: 0rem;
+        margin-right: 0rem;
+        border: none !important;
+    }
 }
 

@@ -14,6 +14,7 @@
     height: auto;
     padding: 1% 0% 1% 0%;
     background-color: var(--color-background-grey);
+    border-radius: 15px;
 }
 
 .container {
@@ -37,6 +38,7 @@
 
 .best-seller-panel__container {
     background-color: var(--color-background-grey);
+    border-radius: 15px;
     
 }
 

@@ -1,16 +1,40 @@
-.main {
-    margin: 2rem 0rem 3rem 0rem;
+
+
+
+.card-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row; /* REVISAR QUERY**/
+
+}
+
+.edit-card {
+    width: 75%;
+    margin: 1rem 1rem 3rem 0rem;
     border: 2px solid black;
     padding: 1rem;
-    border-radius: 5px;
+    border-radius: 15px;
     background-color: rgb(230, 230, 230);
+}
+
+.previous-card {
+    width: 20%;
+    margin: 1rem 0rem 3rem 0rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
 }
 
 .container {
     display: flex;
     flex-direction: row;
+    padding: 0.5rem;
 
-    padding: 1rem;
+    
 }
 
 .box-title {
@@ -19,6 +43,7 @@
     align-items: center;
     width: 100%;
     height: auto;
+    margin-top: 2%;
 }
 
 .box-img {
@@ -27,6 +52,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 1rem;
 }
 
 .box-img__img {
@@ -37,7 +63,6 @@
 }
 
 .box-data {
-
     width: 55%;
     height: auto;
     padding: 1rem;
@@ -55,27 +80,20 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-   
     width: 100%;
-    margin-top: 1rem;
 }
 
 .box-button {
-   
     width: 50%;
     height: auto;
-
 }
 
 .button__update {
     width: 30%;
-    
     background-color: var(--color-black);
     color: var(--color-white);
     border-radius: 5px;
     margin-bottom: 1rem;
-    margin-right: 5rem;
-    
 }
 
 .button__delete {
@@ -84,6 +102,182 @@
     color: var(--color-white);
     border-radius: 5px;
     margin-bottom: 1rem;
-    margin-right: 5rem;
-    
+    margin-left: 5rem;
 }
+
+.box-data__data {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+
+    .main {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .card-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0.5rem;
+    }
+
+    .edit-card {
+        width: 72%;
+        
+
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box-data {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+    }
+
+    .control {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .button__update {
+        width: 100%;
+        background-color: var(--color-black);
+        color: var(--color-white);
+        border-radius: 15px;
+        margin-bottom: 1rem;
+    }
+
+    .button__delete {
+        width: 100%;
+        background-color: var(--color-red-delete);
+        color: var(--color-white);
+        border-radius: 15px;
+        margin-bottom: 1rem;
+        margin-left: 0rem;
+    }
+
+    .box-data {
+        width: 100%;
+        height: auto;
+        padding-top: 1rem;
+    }
+
+    .previous-card {
+        width: 100%;
+        margin: 1rem 1rem 2rem 0rem;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid black;
+    }
+
+    .previous-card-book-card {
+        width: 80%;
+        height: 150rem;
+    }
+
+
+}
+
+
+
+@media (max-width: 978px) {
+
+    .main {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .card-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0.5rem;
+    }
+
+    .edit-card {
+        width: 72%;
+        
+
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box-data {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+    }
+
+    .control {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .button__update {
+        width: 100%;
+        background-color: var(--color-black);
+        color: var(--color-white);
+        border-radius: 15px;
+        margin-bottom: 1rem;
+    }
+
+    .button__delete {
+        width: 100%;
+        background-color: var(--color-red-delete);
+        color: var(--color-white);
+        border-radius: 15px;
+        margin-bottom: 1rem;
+        margin-left: 0rem;
+    }
+
+    .box-data {
+        width: 100%;
+        height: auto;
+        padding-top: 1rem;
+    }
+
+    .previous-card {
+        width: 100%;
+        margin: 1rem 1rem 2rem 0rem;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid black;
+    }
+
+    .previous-card-book-card {
+        width: 79%;
+        height: 150rem;
+    }
+
+
+}
+

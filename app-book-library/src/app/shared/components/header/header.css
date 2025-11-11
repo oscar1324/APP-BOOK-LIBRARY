@@ -1,5 +1,5 @@
 header {
-    
+
     width: 100%;
     height: 100%;
     margin:0 ;
@@ -8,8 +8,8 @@ header {
 
 .content-header {
     background-color: rgb(221, 223, 220);
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 2px solid black;
+    border-radius: 15px;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -19,7 +19,7 @@ header {
 .box-title {
     width: 20%;
     height: 100%;
-    border: 1px solid black;
+    border-right: 1px solid black;
 }
 
 .title {
@@ -40,10 +40,29 @@ mat-toolbar {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+            
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 @media (max-width: 768px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 100%;
+        padding: 0;
+    }
+
+    .header {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
     .content-header {
         display: flex;
@@ -54,14 +73,69 @@ mat-toolbar {
         width: 100%;
         font-size: 0.7rem;
     }
+
+    .box-title {
+        border-right: 0px;
+    }
     .box-toolbar {
         flex-direction: column;
         gap: 0.5rem;
         width: 100%;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 15px;
+        border-bottom-left-radius: 15px;
+        padding-bottom:1rem ;
+    }
+
+    .button {
+        
+        width: 100%;
     }
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 978px) { 
 
-   
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 77%;
+        height: 100%;
+        margin:0 ;
+        padding: 0;
+    }
+
+    .header {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content-header {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .box-title  {
+        width: 100%;
+        font-size: 0.7rem;
+    }
+
+    .box-title {
+        border-right: 0px;
+    }
+    .box-toolbar {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 15px;
+        border-bottom-left-radius: 15px;
+        
+    }
+
 }

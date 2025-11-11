@@ -22,11 +22,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { error } from 'console';
 import { LoggerService } from '../../core/services/loggerService';
-
+import { BookCard } from '../../shared/components/book-card/book-card';
 
 @Component({
   selector: 'app-book-detail-component',
-  imports: [MatFormFieldModule,MatInputModule,ReactiveFormsModule,FormSelect, FormInput, MatIconButton, MatButtonModule, MatIconModule, CommonModule],
+  imports: [BookCard,MatFormFieldModule,MatInputModule,ReactiveFormsModule,FormSelect, FormInput, MatIconButton, MatButtonModule, MatIconModule, CommonModule],
   templateUrl: './book-detail-component.html',
   styleUrl: './book-detail-component.css',
 })
@@ -90,6 +90,10 @@ export class BookDetailComponent implements OnInit{
         price: this.data.price
       });
 
+      this.updateBookForm.valueChanges.subscribe( values=> {
+        this.data = { ...this.data, ...values};
+      })
+
       this.cd.detectChanges();
     });
   }
@@ -109,7 +113,9 @@ export class BookDetailComponent implements OnInit{
 
   updateRequest(): void {
 
-    const objeto_json = {
+  if(this.updateBookForm.valid) {
+    this.loggerService.log('Status Form is correct! ' , '');
+        const objeto_json = {
       title: this.updateBookForm.value.title,
       author: this.updateBookForm.value.author ,
       year: this.updateBookForm.value.year,
@@ -147,6 +153,9 @@ export class BookDetailComponent implements OnInit{
         this.loggerService.error('Failed to fetch books', err);
       }
     })
+  } else {
+    this.loggerService.error('Status form is incorrect!','');
+  }
 
   }
 
