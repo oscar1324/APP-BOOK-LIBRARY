@@ -1,11 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { HttpBookService } from '../../../core/services/HttpBookService';
 import { Ibook } from '../../../models/IBook.model';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatIconButton } from '@angular/material/button';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { LoggerService } from '../../../core/services/loggerService';

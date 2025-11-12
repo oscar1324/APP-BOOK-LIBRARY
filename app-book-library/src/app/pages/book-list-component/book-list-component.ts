@@ -8,14 +8,6 @@ import { CommonModule } from '@angular/common';
 import { BestSellerComponent } from '../../shared/components/best-seller-component/best-seller-component';
 
 
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { FormGroup } from '@angular/forms';
-import { Validators } from '@angular/forms';
-
-import { MatFormFieldModule } from '@angular/material/form-field';
-
-
-
 @Component({
   selector: 'app-book-list-component',
   imports: [

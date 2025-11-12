@@ -20,7 +20,6 @@ import { MatInputModule } from '@angular/material/input';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import { error } from 'console';
 import { LoggerService } from '../../core/services/loggerService';
 import { BookCard } from '../../shared/components/book-card/book-card';
 

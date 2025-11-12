@@ -1,11 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
 import { Component, Input , forwardRef} from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
-import { FormInput } from '../form-input/form-input';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
 import { MatOption } from '@angular/material/select';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';

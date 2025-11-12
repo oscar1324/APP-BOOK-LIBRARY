@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 import { FormInput } from '../../forms/form-input/form-input';
 import { FormSelect } from "../../forms/form-select/form-select";
 import { MatButtonModule } from '@angular/material/button';
-import { CommonModule } from '@angular/common';
 import { HttpBookService } from '../../../core/services/HttpBookService';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ReactiveFormsModule, Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { title } from 'process';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoggerService } from '../../../core/services/loggerService';
 
