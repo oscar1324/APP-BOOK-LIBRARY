@@ -33,14 +33,10 @@ This web application was developed in Angular, which allow manages a digital lib
 # Proyect structure
 src/
  ├── app/
- │   ├── core/               # Global Service
- |       |---- Services/     # HttpBookService and LoggerSergice  
+ │   ├── core/               # Global Service (HttpBookService and LoggerSergice )
  │   ├── models/             # Ibook Interface     
  │   ├── pages/              # Main Components (BookList and BookDetail)      
- │   ├── shared/             # Reusable Components 
- |       |---- Components/   # BestSeller, BookCard, Footer and Header
- |       |---- Dialogs/      # NewRegisterBook
- |       |---- Forms/        # FormInput and FormSelect
+ │   ├── shared/             # Reusable Components, Dialogs, Reusable forms
  │   ├── app.routes.ts       # Main routes
  │   └── app.config.ts       # Main Sets
  ├── assets/                 # Pictures and audios
