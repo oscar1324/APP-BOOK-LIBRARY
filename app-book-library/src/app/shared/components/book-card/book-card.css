@@ -174,20 +174,13 @@
     }
 
     .book-card-box-genre__genre {
-
         width: 100%;
-        display: flex;
-        justify-content: start;
-        align-items: start;
         padding-left: 0.5rem;
-        font-family: 'Intel', sans-serif;
-        color: var(--color-grey-white2);
     }
 
     .button{
         width: 96%;
         margin-bottom: 1rem;
-        
     }
 
 }

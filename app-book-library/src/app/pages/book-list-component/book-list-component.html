@@ -1,5 +1,5 @@
 
-<div class="">
+<div class="main">
     <div class="body-book-list">
         <div class="container">
             <div class="text-panel__container"> 
@@ -14,10 +14,12 @@
                         <input class="input-search"
                             matInput
                             [(ngModel)]="searchBook"
-                            placeholder="Search your favorite book"
+                            placeholder="Search your book"
                         >
                         <button class="button-search" mat-icon-button matSuffix  (click)="showBookSearched()">
-                            Search
+                            <mat-icon>
+                                search
+                            </mat-icon>
                         </button>   
                     </mat-form-field>
                 </div>

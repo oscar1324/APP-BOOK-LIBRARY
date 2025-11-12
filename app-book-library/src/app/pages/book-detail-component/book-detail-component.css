@@ -183,7 +183,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        border: 1px solid black;
     }
 
     .previous-card-book-card {
@@ -270,11 +269,11 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        border: 1px solid black;
+
     }
 
     .previous-card-book-card {
-        width: 79%;
+        width: 78%;
         height: 150rem;
     }
 
