@@ -6,19 +6,6 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { CoreModule } from './core/core-module';
 import { ExtraOptions } from '@angular/router';
 
-export const appConfig: ApplicationConfig = {
-  providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideZonelessChangeDetection(),
-    provideHttpClient( withFetch()),
-    provideRouter(
-      routes,
-      
-    ), 
-    provideClientHydration(withEventReplay())
-  ]
-};
-
 const routerOptions: ExtraOptions = {
     // ESTA ES LA PROPIEDAD CLAVE: 
     // Fuerza el scroll al inicio (0, 0) en cada navegación.
@@ -28,7 +15,22 @@ const routerOptions: ExtraOptions = {
     anchorScrolling: 'enabled',
 
     // Opcional: Define un desplazamiento para barras fijas (si tienes una)
-    scrollOffset: [0, 0] // Sin desplazamiento inicial
+    scrollOffset: [0, 0] 
 };
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideZonelessChangeDetection(),
+    provideHttpClient( withFetch()),
+    provideRouter(
+      routes,
+      withRouterConfig(routerOptions)
+    ), 
+    provideClientHydration(withEventReplay())
+  ]
+};
+
+
 
 

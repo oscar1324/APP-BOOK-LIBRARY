@@ -68,7 +68,11 @@ export class BookDetailComponent implements OnInit{
 
 
   ngOnInit(): void {
-    
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
     this.router.queryParams.subscribe(params => {
       this.loggerService.log('Review the params data', params);
 
