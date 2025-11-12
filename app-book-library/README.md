@@ -1,59 +1,48 @@
-# AppBookLibrary
+# APP-BOOK-LIBRARY
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.9.
+This web application was developed in Angular, which allow manages a digital librery, it can list, add, edit and delete books of the best seller catalog.
 
-## Development server
+# Main characteristic
+- Dinamic list books (responsive cards).
+- Register of new books using a reactive forms with validators and toast notification.
+- Edit books with an instant previous card and toast notification.
+- Delete the books and recieve and toast notification.
+- Integration with MockApi for CRUD operations.
+- Modular arquitecture: CoreModule, Shared, HttpBookService.
+- Globar error handling  and LoggerService.
+- Styles with Angular Material and Flex/Grid for a responsive design.
 
-To start a local development server, run:
+# Technologies used
+- Angular 20
+- Angular Material
+- TypeScript
+- RxJS
+- CSS/Flexbox/ CSS Grid
+- MockAPI 
+- Visual Studio
+- GitHub
+- Git Bash
 
-```bash
-ng serve
-```
+# Instalation and execution
+- git clone https://github.com/oscar1324/APP-BOOK-LIBRARY.git cd APP-BOOK-LIBRARY
+- npm install
+- ng serve
+- Open localhost: http://localhost:4200
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+# Proyect structure
+src/
+ ├── app/
+ │   ├── core/               # Global Service
+ |       |---- Services/     # HttpBookService and LoggerSergice  
+ │   ├── models/             # Ibook Interface     
+ │   ├── pages/              # Main Components (BookList and BookDetail)      
+ │   ├── shared/             # Reusable Components 
+ |       |---- Components/   # BestSeller, BookCard, Footer and Header
+ |       |---- Dialogs/      # NewRegisterBook
+ |       |---- Forms/        # FormInput and FormSelect
+ │   ├── app.routes.ts       # Main routes
+ │   └── app.config.ts       # Main Sets
+ ├── assets/                 # Pictures and audios
+ └── main.ts
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
